@@ -1,0 +1,297 @@
+.advantages {
+  padding: 105px 0;
+  background: #080f18;
+}
+
+.advantages__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.advantages__title {
+  margin: 0 0 48px;
+
+  color: #ffffff;
+
+  font-size: clamp(40px, 3.8vw, 58px);
+  font-weight: 800;
+
+  line-height: 1.02;
+
+  letter-spacing: -2.5px;
+}
+
+.advantages__title-gradient {
+  color: transparent;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.advantages__title-gradient--blue {
+  background-image: linear-gradient(
+    90deg,
+    #45a8ff 0%,
+    #607dff 48%,
+    #a250f5 100%
+  );
+}
+
+.advantages__title-gradient--green {
+  background-image: linear-gradient(
+    90deg,
+    #f4d84c 0%,
+    #79d95d 48%,
+    #37d2a1 100%
+  );
+}
+
+.advantages__grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 24px;
+}
+.advantages__card {
+  min-height: 236px;
+
+  padding: 24px 22px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.045) 100%
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.advantages__card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(84, 195, 255, 0.35);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.105) 0%,
+    rgba(255, 255, 255, 0.055) 100%
+  );
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.advantages__icon {
+  width: 54px;
+  height: 54px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantages__icon img {
+  width: 48px;
+  height: 48px;
+
+  display: block;
+
+  object-fit: contain;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.advantages__card:hover .advantages__icon img {
+  transform: scale(1.08);
+}
+
+.advantages__card-title {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 1.25;
+}
+
+.advantages__card-text {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.advantages__installment {
+  position: relative;
+
+  min-height: 130px;
+
+  padding: 26px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      105deg,
+      rgba(238, 215, 63, 0.17) 0%,
+      rgba(50, 205, 158, 0.12) 36%,
+      rgba(69, 149, 255, 0.13) 68%,
+      rgba(151, 70, 244, 0.16) 100%
+    ),
+    #101823;
+}
+
+.advantages__installment::before {
+  content: '';
+
+  position: absolute;
+
+  left: -80px;
+  bottom: -90px;
+
+  width: 260px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background: rgba(231, 211, 67, 0.12);
+
+  filter: blur(60px);
+
+  pointer-events: none;
+}
+
+.advantages__installment::after {
+  content: '';
+
+  position: absolute;
+
+  right: -70px;
+  bottom: -100px;
+
+  width: 260px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: rgba(153, 72, 244, 0.15);
+
+  filter: blur(65px);
+
+  pointer-events: none;
+}
+
+.advantages__installment-content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.advantages__installment-label {
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: 13px;
+}
+
+.advantages__installment-title {
+  color: #ffffff;
+
+  font-size: 30px;
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+.advantages__button {
+  position: relative;
+  z-index: 2;
+
+  min-height: 50px;
+
+  padding-left: 22px;
+  padding-right: 22px;
+
+  border-radius: 13px;
+
+  font-size: 12px;
+}
+
+@media (max-width: 1050px) {
+  .advantages__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .advantages {
+    padding: 70px 0;
+  }
+
+  .advantages__title {
+    margin-bottom: 36px;
+
+    font-size: 38px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .advantages__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .advantages__card {
+    min-height: auto;
+  }
+
+  .advantages__installment {
+    min-height: auto;
+
+    padding: 24px 20px;
+
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .advantages__installment-title {
+    font-size: 25px;
+  }
+
+  .advantages__button {
+    width: 100%;
+  }
+}
