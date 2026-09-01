@@ -1,9 +1,16 @@
+import Header from './sections/Header/Header'
+import Hero from './sections/Hero/Hero'
+
+
 function App() {
   return (
-    <main>
-      <h1>Хамелеон</h1>
-      <p>Натяжные потолки</p>
-    </main>
+    <>
+      <Header />
+
+      <main>
+        <Hero />
+      </main>
+    </>
   )
 }
 

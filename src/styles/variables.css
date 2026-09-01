@@ -1,25 +1,18 @@
 :root {
-  /* Colors */
   --color-white: #ffffff;
   --color-black: #111111;
   --color-text: #252525;
   --color-text-secondary: #707070;
-  --color-background: #ffffff;
-  --color-background-light: #f6f7f8;
 
-  /* Brand */
-  --color-primary: #46a84f;
-  --color-secondary: #168bd2;
+  --color-primary: #53dc79;
+  --color-secondary: #4dbfe8;
 
-  /* Layout */
-  --container-width: 1200px;
+  --container-width: 1320px;
   --container-padding: 20px;
 
-  /* Border radius */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
 
-  /* Transitions */
   --transition: 0.25s ease;
 }
