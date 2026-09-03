@@ -1,16 +1,273 @@
-# React + Vite
+# Хамелеон — натяжные потолки
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современный адаптивный сайт для компании по установке натяжных потолков в Ростове-на-Дону.
 
-Currently, two official plugins are available:
+Проект представляет собой редизайн сайта компании «Хамелеон» с упором на современный интерфейс, удобство пользователя, адаптивность и получение заявок через сайт.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## О проекте
 
-## React Compiler
+Сайт разработан как полноценный коммерческий проект для компании, занимающейся установкой натяжных потолков.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Основные задачи проекта:
 
-## Expanding the ESLint configuration
+- обновить визуальный стиль сайта;
+- сделать интерфейс современным и адаптивным;
+- удобно представить услуги, акции и выполненные проекты;
+- реализовать интерактивный калькулятор стоимости;
+- организовать получение заявок с сайта;
+- интегрировать формы с Telegram через собственный backend;
+- подготовить проект к SEO-оптимизации и дальнейшему продвижению.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Функциональность
+
+### Главный экран
+
+Адаптивный Hero-блок с основным предложением компании, преимуществами и формой заявки на бесплатный замер.
+
+### Калькулятор стоимости
+
+Интерактивный калькулятор позволяет указать:
+
+- ширину и длину помещения;
+- тип потолка;
+- количество углов;
+- количество светильников.
+
+На основе выбранных параметров рассчитывается предварительная стоимость.
+
+Результат расчёта может быть передан вместе с заявкой пользователя.
+
+### Акции
+
+Отдельный раздел с актуальными предложениями компании.
+
+При выборе акции информация о ней отправляется на backend и далее передаётся в Telegram.
+
+### Портфолио
+
+Галерея реальных выполненных работ компании.
+
+### Прайс
+
+Карточки с основными вариантами потолков и стоимостью.
+
+### Производство
+
+Раздел с информацией о собственном производстве и преимуществах компании.
+
+### Партнёры
+
+Блок с партнёрами компании и бонусной программой.
+
+### Команда
+
+Раздел с информацией о специалистах компании.
+
+### Заявки
+
+На сайте реализовано несколько источников заявок:
+
+- форма на главном экране;
+- форма обратной связи;
+- калькулятор стоимости;
+- акции.
+
+Frontend отправляет данные через REST API на backend, реализованный на FastAPI.
+
+Backend обрабатывает заявку и отправляет уведомление в Telegram.
+
+## Архитектура
+
+```text
+React / Vite
+      │
+      │ HTTP / JSON
+      ▼
+FastAPI REST API
+      │
+      ▼
+Telegram Bot API
+      │
+      ▼
+Telegram
+```
+
+Telegram Bot Token и другие секретные данные хранятся в переменных окружения и не передаются во frontend.
+
+## Технологии
+
+### Frontend
+
+- React
+- JavaScript
+- Vite
+- CSS
+- Responsive Design
+- Fetch API
+
+### Backend
+
+- Python
+- FastAPI
+- Uvicorn
+- HTTPX
+- python-dotenv
+- Telegram Bot API
+
+### Инструменты
+
+- Git
+- GitHub
+- ESLint
+
+## Структура проекта
+
+```text
+hameleon/
+├── backend/
+│   └── main.py
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   │   ├── icons/
+│   │   ├── images/
+│   │   └── logos/
+│   │
+│   ├── components/
+│   │   └── Button/
+│   │
+│   ├── sections/
+│   │   ├── Advantages/
+│   │   ├── Calculator/
+│   │   ├── Contact/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Hero/
+│   │   ├── Partners/
+│   │   ├── Portfolio/
+│   │   ├── Price/
+│   │   ├── Production/
+│   │   ├── Promotions/
+│   │   └── Team/
+│   │
+│   ├── styles/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+## Локальный запуск
+
+### Frontend
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запустить development server:
+
+```bash
+npm run dev
+```
+
+После запуска Vite покажет локальный адрес приложения.
+
+### Backend
+
+Перейти в директорию backend:
+
+```bash
+cd backend
+```
+
+Создать виртуальное окружение:
+
+```bash
+python3 -m venv venv
+```
+
+Активировать его:
+
+```bash
+source venv/bin/activate
+```
+
+Установить зависимости:
+
+```bash
+pip install fastapi "uvicorn[standard]" python-dotenv httpx
+```
+
+Создать файл:
+
+```text
+backend/.env
+```
+
+Добавить переменные окружения:
+
+```env
+TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+TELEGRAM_CHAT_ID=your_telegram_chat_id
+```
+
+Запустить API:
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend будет доступен по адресу:
+
+```text
+http://127.0.0.1:8000
+```
+
+Swagger-документация FastAPI:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Адаптивность
+
+Интерфейс адаптирован под разные размеры экранов:
+
+- desktop;
+- laptop;
+- tablet;
+- mobile.
+
+Основные секции и элементы интерфейса перестраиваются в зависимости от ширины экрана.
+
+## Планы развития
+
+- SEO-оптимизация;
+- оптимизация Core Web Vitals;
+- sitemap.xml и robots.txt;
+- Schema.org / LocalBusiness;
+- оптимизация изображений;
+- production deployment frontend и backend;
+- защита API от спама;
+- дополнительная отправка заявок на email;
+- улучшение доступности интерфейса.
+
+## Статус проекта
+
+Проект находится в активной разработке.
+
+Основной интерфейс, адаптивная вёрстка, калькулятор, формы заявок, FastAPI backend и интеграция с Telegram реализованы.
+
+Следующий этап — SEO-оптимизация и production deployment.
+
+---
+
+**Хамелеон** — натяжные потолки в Ростове-на-Дону.
