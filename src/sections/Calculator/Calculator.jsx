@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
+
 import './Calculator.css'
 import Button from '../../components/Button/Button'
 
-function Calculator() {
+function Calculator({ onCalculate }) {
   const [width, setWidth] = useState(4.2)
   const [length, setLength] = useState(5)
   const [ceilingType, setCeilingType] = useState('Матовый')
@@ -38,11 +39,33 @@ function Calculator() {
 
   const formattedPrice = new Intl.NumberFormat('ru-RU').format(price)
 
+  const handleExactCalculation = () => {
+    const data = {
+      width: Number(width),
+      length: Number(length),
+      area,
+      ceiling_type: ceilingType,
+      corners: Number(corners),
+      lights: Number(lights),
+      estimated_price: price,
+    }
+
+    console.log('Данные калькулятора:', data)
+
+    onCalculate?.(data)
+
+    document
+      .getElementById('measurement')
+      ?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+  }
+
   return (
     <section className="calculator" id="calculator">
       <div className="container">
         <div className="calculator__card">
-
           <div className="calculator__content">
             <h2 className="calculator__title">
               Узнайте стоимость потолка за 1 минуту
@@ -54,7 +77,6 @@ function Calculator() {
             </p>
 
             <div className="calculator__grid">
-
               <label className="calculator__field">
                 <span>ШИРИНА, М</span>
 
@@ -96,21 +118,10 @@ function Calculator() {
                   value={ceilingType}
                   onChange={(event) => setCeilingType(event.target.value)}
                 >
-                  <option value="Матовый">
-                    Матовый
-                  </option>
-
-                  <option value="Глянцевый">
-                    Глянцевый
-                  </option>
-
-                  <option value="Сатиновый">
-                    Сатиновый
-                  </option>
-
-                  <option value="Тканевый">
-                    Тканевый
-                  </option>
+                  <option value="Матовый">Матовый</option>
+                  <option value="Глянцевый">Глянцевый</option>
+                  <option value="Сатиновый">Сатиновый</option>
+                  <option value="Тканевый">Тканевый</option>
                 </select>
               </label>
 
@@ -135,18 +146,16 @@ function Calculator() {
                   onChange={(event) => setLights(event.target.value)}
                 />
               </label>
-
             </div>
           </div>
 
           <aside className="calculator__result">
-
             <span className="calculator__result-label">
               Предварительная стоимость
             </span>
 
             <div className="calculator__price">
-              от {formattedPrice}₽
+              от {formattedPrice} ₽
             </div>
 
             <p className="calculator__result-text">
@@ -155,14 +164,12 @@ function Calculator() {
             </p>
 
             <Button
-              href="#measurement"
+              onClick={handleExactCalculation}
               className="calculator__button"
             >
               Получить точный расчёт
             </Button>
-
           </aside>
-
         </div>
       </div>
     </section>

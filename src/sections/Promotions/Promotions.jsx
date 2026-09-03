@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './Promotions.css'
 
 const promotions = [
@@ -40,6 +41,72 @@ const promotions = [
 ]
 
 function Promotions() {
+  const [sendingPromotion, setSendingPromotion] = useState(null)
+  const [sentPromotion, setSentPromotion] = useState(null)
+  const [errorPromotion, setErrorPromotion] = useState(null)
+
+  const handlePromotionClick = async (promotion) => {
+    if (sendingPromotion) {
+      return
+    }
+
+    setSendingPromotion(promotion.title)
+    setSentPromotion(null)
+    setErrorPromotion(null)
+
+    try {
+      const response = await fetch(
+        'http://127.0.0.1:8000/api/leads',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            source: 'promotion',
+            promotion: {
+              title: promotion.title,
+              value: promotion.value,
+              text: promotion.text,
+            },
+          }),
+        },
+      )
+
+    if (!response.ok) {
+    const errorData = await response.json()
+
+    console.error(
+        'Ошибка FastAPI:',
+        response.status,
+        errorData,
+    )
+
+    throw new Error('Не удалось отправить заявку')
+    }
+
+      const data = await response.json()
+
+      console.log('Заявка отправлена:', data)
+
+      setSentPromotion(promotion.title)
+
+      setTimeout(() => {
+        setSentPromotion(null)
+      }, 3000)
+    } catch (error) {
+      console.error('Ошибка отправки:', error)
+
+      setErrorPromotion(promotion.title)
+
+      setTimeout(() => {
+        setErrorPromotion(null)
+      }, 3000)
+    } finally {
+      setSendingPromotion(null)
+    }
+  }
+
   return (
     <section className="promotions" id="promotions">
       <div className="container">
@@ -59,33 +126,54 @@ function Promotions() {
           </div>
 
           <div className="promotions__grid">
-            {promotions.map((promotion) => (
-              <article
-                className="promotions__card"
-                key={promotion.title}
-              >
-                <div className="promotions__card-content">
-                  <div className="promotions__value">
-                    {promotion.value}
+            {promotions.map((promotion) => {
+              const isSending =
+                sendingPromotion === promotion.title
+
+              const isSent =
+                sentPromotion === promotion.title
+
+              const hasError =
+                errorPromotion === promotion.title
+
+              return (
+                <article
+                  className="promotions__card"
+                  key={promotion.title}
+                >
+                  <div className="promotions__card-content">
+                    <div className="promotions__value">
+                      {promotion.value}
+                    </div>
+
+                    <h3 className="promotions__card-title">
+                      {promotion.title}
+                    </h3>
+
+                    <p className="promotions__card-text">
+                      {promotion.text}
+                    </p>
                   </div>
 
-                  <h3 className="promotions__card-title">
-                    {promotion.title}
-                  </h3>
-
-                  <p className="promotions__card-text">
-                    {promotion.text}
-                  </p>
-                </div>
-
-                <a
-                  href="#measurement"
-                  className="promotions__card-button"
-                >
-                  {promotion.button}
-                </a>
-              </article>
-            ))}
+                  <button
+                    type="button"
+                    className="promotions__card-button"
+                    onClick={() =>
+                      handlePromotionClick(promotion)
+                    }
+                    disabled={isSending}
+                  >
+                    {isSending
+                      ? 'Отправляем...'
+                      : isSent
+                        ? 'Заявка отправлена ✓'
+                        : hasError
+                          ? 'Заявка не отправлена'
+                          : promotion.button}
+                  </button>
+                </article>
+              )
+            })}
           </div>
         </div>
       </div>

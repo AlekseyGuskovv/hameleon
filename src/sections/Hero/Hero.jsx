@@ -1,8 +1,72 @@
+import { useState } from 'react'
+
 import './Hero.css'
 import Button from '../../components/Button/Button'
 import heroBg from '../../assets/images/hero-bg.jpg'
 
 function Hero() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+  })
+
+  const [status, setStatus] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    setIsLoading(true)
+    setStatus('')
+
+    try {
+      const response = await fetch(
+        'http://127.0.0.1:8000/api/leads',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            source: 'hero_discount',
+            promotion: {
+              title: 'Месяц мега-скидок',
+              value: '20%',
+              text: 'Заявка на бесплатный замер с главного экрана',
+            },
+          }),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error('Ошибка отправки заявки')
+      }
+
+      setStatus('success')
+
+      setFormData({
+        name: '',
+        phone: '',
+      })
+    } catch (error) {
+      console.error('Ошибка отправки:', error)
+      setStatus('error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <section
       className="hero"
@@ -14,7 +78,6 @@ function Hero() {
 
       <div className="container hero__inner">
         <div className="hero__content">
-
           <div className="hero__eyebrow">
             <span className="hero__eyebrow-line"></span>
             Натяжные потолки в Ростове-на-Дону
@@ -93,24 +156,49 @@ function Hero() {
 
           <div className="hero__form-line"></div>
 
-          <form className="hero__form">
+          <form
+            className="hero__form"
+            onSubmit={handleSubmit}
+          >
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Ваше имя"
+              required
             />
 
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="+7 (___) ___-__-__"
+              required
             />
 
             <Button
               type="submit"
               className="hero__submit"
             >
-              Забрать скидку
+              {isLoading
+                ? 'Отправляем...'
+                : 'Забрать скидку'}
             </Button>
           </form>
+
+          {status === 'success' && (
+            <p className="hero__status hero__status--success">
+              Заявка отправлена ✓
+            </p>
+          )}
+
+          {status === 'error' && (
+            <p className="hero__status hero__status--error">
+              Не удалось отправить заявку
+            </p>
+          )}
 
           <p className="hero__policy">
             Нажимая кнопку, вы соглашаетесь с политикой
