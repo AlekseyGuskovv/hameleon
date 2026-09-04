@@ -1,7 +1,7 @@
 import './Production.css'
-import Button from '../../components/Button/Button'
 
-import productionImage from '../../assets/images/production/prod-1.png'
+import Button from '../../components/Button/Button'
+import productionImage from '../../assets/images/production/prod-1.webp'
 
 const productionAdvantages = [
   {
@@ -27,7 +27,8 @@ function Production() {
             <img
               className="production__image"
               src={productionImage}
-              alt="Собственное производство натяжных потолков Хамелеон"
+              alt="Собственное производство натяжных потолков компании Хамелеон"
+              loading="lazy"
             />
 
             <div className="production__image-card">
@@ -43,20 +44,19 @@ function Production() {
 
           <div className="production__content">
             <h2 className="production__title">
-              От идеи до готового
+              Собственное производство
               <br />
-              потолка —{' '}
+              натяжных потолков{' '}
               <span className="production__title-gradient">
-                в одной
-                <br />
-                компании
+                в Ростове-на-Дону
               </span>
             </h2>
 
             <p className="production__description">
               Собственная производственная база позволяет контролировать
-              качество, сроки и реализовывать практически любые формы
-              по чертежу или дизайн-проекту.
+              качество полотен и комплектующих, соблюдать сроки изготовления
+              и реализовывать натяжные потолки любой сложности по чертежу
+              или дизайн-проекту.
             </p>
 
             <ul className="production__advantages">
@@ -65,7 +65,10 @@ function Production() {
                   className="production__advantage"
                   key={item.title}
                 >
-                  <span className="production__check">
+                  <span
+                    className="production__check"
+                    aria-hidden="true"
+                  >
                     ✓
                   </span>
 

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
 import './Hero.css'
+
 import Button from '../../components/Button/Button'
-import heroBg from '../../assets/images/hero-bg.jpg'
+import heroBg from '../../assets/images/hero-bg.webp'
 
 function Hero() {
   const [formData, setFormData] = useState({
@@ -80,17 +81,16 @@ function Hero() {
         <div className="hero__content">
           <div className="hero__eyebrow">
             <span className="hero__eyebrow-line"></span>
-            Натяжные потолки в Ростове-на-Дону
+            Производство и установка под ключ
           </div>
 
           <h1 className="hero__title">
-            Потолки,
+            Натяжные потолки
             <br />
-            которые
+            в Ростове-на-Дону,
             <br />
-
             <span className="hero__title-gradient">
-              меняют
+              которые меняют
               <br />
               пространство
             </span>
@@ -166,6 +166,7 @@ function Hero() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Ваше имя"
+              autoComplete="name"
               required
             />
 
@@ -175,6 +176,7 @@ function Hero() {
               value={formData.phone}
               onChange={handleChange}
               placeholder="+7 (___) ___-__-__"
+              autoComplete="tel"
               required
             />
 

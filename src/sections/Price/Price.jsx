@@ -4,7 +4,7 @@ import price01 from '../../assets/images/prices/price-1.jpg'
 import price02 from '../../assets/images/prices/price-2.jpg'
 import price03 from '../../assets/images/prices/price-3.jpg'
 import price04 from '../../assets/images/prices/price-4.jpg'
-import price05 from '../../assets/images/prices/price-5.jpg'
+import price05 from '../../assets/images/prices/price-5.webp'
 
 const priceItems = [
   {
@@ -50,7 +50,7 @@ function Price() {
       <div className="container">
         <div className="price__inner">
           <h2 className="price__title">
-            Прайс
+            Цены на натяжные потолки в Ростове-на-Дону
           </h2>
 
           <div className="price__grid">
@@ -63,10 +63,14 @@ function Price() {
                 <img
                   className="price__image"
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} в ${item.room.toLowerCase()}`}
+                  loading="lazy"
                 />
 
-                <div className="price__overlay" />
+                <div
+                  className="price__overlay"
+                  aria-hidden="true"
+                />
 
                 <div className="price__content">
                   <span className="price__room">

@@ -1,4 +1,5 @@
 import './Footer.css'
+
 import logo from '../../assets/logos/logo.svg'
 
 function Footer() {
@@ -6,20 +7,18 @@ function Footer() {
     <footer className="footer" id="contacts">
       <div className="container">
         <div className="footer__inner">
-
           <div className="footer__top">
-
             <div className="footer__brand">
               <a
                 className="footer__logo"
                 href="#top"
                 aria-label="Хамелеон — на главную"
-            >
+              >
                 <img
-                className="footer__logo-mark"
-                src={logo}
-                alt="Хамелеон"
-            />
+                  className="footer__logo-mark"
+                  src={logo}
+                  alt="Хамелеон — натяжные потолки"
+                />
 
                 <div className="footer__logo-text">
                   <strong>ХАМЕЛЕОН</strong>
@@ -28,7 +27,8 @@ function Footer() {
               </a>
 
               <p className="footer__description">
-                Производство и установка натяжных потолков в Ростове-на-Дону.
+                Производство и установка натяжных потолков
+                в Ростове-на-Дону.
               </p>
             </div>
 
@@ -71,7 +71,6 @@ function Footer() {
                 Политика конфиденциальности
               </a>
             </div>
-
           </div>
 
           <div className="footer__bottom">
@@ -80,10 +79,9 @@ function Footer() {
             </p>
 
             <p>
-                Натяжные потолки в Ростове-на-Дону
+              Натяжные потолки в Ростове-на-Дону
             </p>
           </div>
-
         </div>
       </div>
     </footer>

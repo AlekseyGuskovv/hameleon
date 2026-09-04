@@ -1,33 +1,32 @@
 import './Team.css'
 
-import teamImage from '../../assets/images/team/team.png'
+import teamImage from '../../assets/images/team/team.webp'
 
 function Team() {
   return (
     <section className="team" id="team">
       <div className="container">
         <div className="team__inner">
-
           <div className="team__content">
             <span className="team__label">
               Наша команда
             </span>
 
             <h2 className="team__title">
-              Люди, которые
+              Команда специалистов
               <br />
-              знают о потолках
+              по натяжным потолкам
               <br />
               <span className="team__title-gradient">
-                всё
+                «Хамелеон»
               </span>
             </h2>
 
             <p className="team__description">
-              Мы проектируем, производим и устанавливаем натяжные
-              потолки больше 10 лет. Бесплатно консультируем,
-              внимательно относимся к пожеланиям и подбираем
-              решение под интерьер и бюджет.
+              Мы проектируем, производим и устанавливаем натяжные потолки
+              в Ростове-на-Дону более 10 лет. Бесплатно консультируем,
+              внимательно относимся к пожеланиям и подбираем решение
+              под интерьер и бюджет.
             </p>
 
             <p className="team__quote">
@@ -39,10 +38,10 @@ function Team() {
             <img
               className="team__image"
               src={teamImage}
-              alt="Команда компании Хамелеон"
+              alt="Команда компании Хамелеон по установке натяжных потолков"
+              loading="lazy"
             />
           </div>
-
         </div>
       </div>
     </section>

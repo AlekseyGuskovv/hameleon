@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import './Promotions.css'
 
 const promotions = [
@@ -73,17 +74,17 @@ function Promotions() {
         },
       )
 
-    if (!response.ok) {
-    const errorData = await response.json()
+      if (!response.ok) {
+        const errorData = await response.json()
 
-    console.error(
-        'Ошибка FastAPI:',
-        response.status,
-        errorData,
-    )
+        console.error(
+          'Ошибка FastAPI:',
+          response.status,
+          errorData,
+        )
 
-    throw new Error('Не удалось отправить заявку')
-    }
+        throw new Error('Не удалось отправить заявку')
+      }
 
       const data = await response.json()
 
@@ -113,15 +114,16 @@ function Promotions() {
         <div className="promotions__inner">
           <div className="promotions__header">
             <h2 className="promotions__title">
-              Выгодные условия{' '}
+              Акции и скидки на натяжные потолки{' '}
               <span className="promotions__title-gradient">
-                в одном месте
+                в Ростове-на-Дону
               </span>
             </h2>
 
             <p className="promotions__description">
-              Сохранили все предложения старого сайта, но собрали их
-              в понятный и современный блок.
+              Выберите подходящее предложение и получите скидку
+              на натяжной потолок, бесплатный замер или дополнительные
+              условия на освещение и дизайн-проект.
             </p>
           </div>
 
@@ -162,6 +164,7 @@ function Promotions() {
                       handlePromotionClick(promotion)
                     }
                     disabled={isSending}
+                    aria-busy={isSending}
                   >
                     {isSending
                       ? 'Отправляем...'

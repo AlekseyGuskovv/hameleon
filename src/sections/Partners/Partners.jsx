@@ -8,39 +8,37 @@ function Partners() {
     <section className="partners" id="partners">
       <div className="container">
         <div className="partners__card">
-
           <div className="partners__top">
-
             <div className="partners__bonus">
               <img
                 className="partners__bonus-image"
                 src={bonusClubQr}
-                alt="Бонус-клуб и QR-код"
+                alt="Бонус-клуб компании Хамелеон и QR-код"
               />
             </div>
 
             <div className="partners__content">
               <h2 className="partners__title">
-                Наши партнёры
+                Партнёры компании «Хамелеон»
               </h2>
 
               <div className="partners__title-line" />
 
               <div className="partners__text">
                 <p>
-                  Компания Хамелеон является одним из участников Бонус-клуба.
+                  Компания «Хамелеон» является одним из участников Бонус-клуба.
                 </p>
 
                 <p>
-                  Бонус-клуб — это ваша возможность облегчить себе выбор
-                  качественных строительных и отделочных материалов и при этом
+                  Бонус-клуб — это возможность выбрать качественные
+                  строительные и отделочные материалы и при этом
                   <strong>
                     {' '}сэкономить на ремонте более 100 000 рублей.
                   </strong>
                 </p>
 
                 <h3>
-                  Условия участия
+                  Условия участия в Бонус-клубе
                 </h3>
 
                 <p>
@@ -59,21 +57,19 @@ function Partners() {
                     {' '}сертификат на скидку 10%
                   </strong>{' '}
                   на весь ассортимент натяжных потолков и все виды услуг
-                  компании Хамелеон.
+                  компании «Хамелеон».
                 </p>
               </div>
             </div>
-
           </div>
 
           <div className="partners__logos">
             <img
               className="partners__logos-image"
               src={partnersLogos}
-              alt="Партнёры компании Хамелеон"
+              alt="Логотипы партнёров компании Хамелеон"
             />
           </div>
-
         </div>
       </div>
     </section>

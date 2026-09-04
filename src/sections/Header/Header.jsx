@@ -5,19 +5,17 @@ import Button from '../../components/Button/Button'
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header" id="top">
       <div className="container header__inner">
-
-        {}
         <a
           className="header__logo"
-          href="#"
+          href="#top"
           aria-label="Хамелеон — на главную"
         >
           <img
             className="header__logo-icon"
             src={logo}
-            alt="Хамелеон"
+            alt="Хамелеон — натяжные потолки"
           />
 
           <div className="header__logo-text">
@@ -31,8 +29,10 @@ function Header() {
           </div>
         </a>
 
-        {}
-        <nav className="header__nav">
+        <nav
+          className="header__nav"
+          aria-label="Основная навигация"
+        >
           <a href="#calculator">
             Калькулятор
           </a>
@@ -54,9 +54,7 @@ function Header() {
           </a>
         </nav>
 
-        {}
         <div className="header__right">
-
           <div className="header__contacts">
             <a
               className="header__phone"
@@ -76,9 +74,7 @@ function Header() {
           >
             Вызвать замерщика
           </Button>
-
         </div>
-
       </div>
     </header>
   )

@@ -35,11 +35,9 @@ function Contact({ calculatorData }) {
         'http://127.0.0.1:8000/api/leads',
         {
           method: 'POST',
-
           headers: {
             'Content-Type': 'application/json',
           },
-
           body: JSON.stringify({
             name: formData.name,
             phone: formData.phone,
@@ -65,7 +63,6 @@ function Contact({ calculatorData }) {
       })
     } catch (error) {
       console.error(error)
-
       setStatus('error')
     } finally {
       setIsLoading(false)
@@ -85,15 +82,15 @@ function Contact({ calculatorData }) {
             </span>
 
             <h2 className="contact__title">
-              Узнайте точную стоимость
+              Бесплатный замер натяжного потолка
               <br />
-              вашего потолка
+              в Ростове-на-Дону
             </h2>
 
             <p className="contact__description">
-              Инженер приедет в удобное время, покажет образцы,
-              поможет с освещением и конструкцией и зафиксирует
-              цену в договоре.
+              Инженер приедет в удобное время, выполнит замер помещения,
+              покажет образцы полотен, поможет подобрать освещение и конструкцию,
+              рассчитает точную стоимость и зафиксирует цену в договоре.
             </p>
           </div>
 

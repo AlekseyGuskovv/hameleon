@@ -1,4 +1,5 @@
 import './Advantages.css'
+
 import Button from '../../components/Button/Button'
 
 import qualityIcon from '../../assets/icons/quality.svg'
@@ -59,13 +60,13 @@ function Advantages() {
       <div className="container">
         <div className="advantages__inner">
           <h2 className="advantages__title">
-            Преимущества, которые{' '}
+            Преимущества натяжных потолков{' '}
             <span className="advantages__title-gradient advantages__title-gradient--blue">
-              чувствуются
+              от компании
             </span>
             <br />
             <span className="advantages__title-gradient advantages__title-gradient--green">
-              после монтажа
+              «Хамелеон»
             </span>
           </h2>
 
