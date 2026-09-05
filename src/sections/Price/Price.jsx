@@ -3,8 +3,8 @@ import './Price.css'
 import price01 from '../../assets/images/prices/price-1.jpg'
 import price02 from '../../assets/images/prices/price-2.jpg'
 import price03 from '../../assets/images/prices/price-3.jpg'
-import price04 from '../../assets/images/prices/price-4.jpg'
-import price05 from '../../assets/images/prices/price-5.webp'
+import price04 from '../../assets/images/prices/price-4.png'
+import price05 from '../../assets/images/prices/price-5.jpg'
 
 const priceItems = [
   {
